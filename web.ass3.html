@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple E-Commerce Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    /* Navigation Bar */
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+    }
+    nav ul li a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    section {
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    /* Forms */
+    form {
+      max-width: 400px;
+      margin: 20px 0;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+
+    ul.items-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.items-list li {
+      background: #f2f2f2;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1️⃣ Navigation Menu -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Product Items</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#about">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2️⃣ Home Section -->
+  <section id="home">
+    <h2>Welcome to Our Store</h2>
+    <p>Browse our products and enjoy shopping!</p>
+  </section>
+
+  <!-- 3️⃣ Product Section -->
+  <section id="products">
+    <h2>Product Items</h2>
+    <ul class="items-list">
+      <li>Product 1 - ₹500</li>
+      <li>Product 2 - ₹800</li>
+      <li>Product 3 - ₹1200</li>
+    </ul>
+  </section>
+
+  <!-- 4️⃣ Registration & Login Form with Validation -->
+  <section id="user">
+    <h2>User Registration</h2>
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Full Name" required />
+      <input type="email" id="regEmail" placeholder="Email Address" required />
+      <input type="password" id="regPassword" placeholder="Password" minlength="6" required />
+      <button type="submit">Register</button>
+    </form>
+
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email Address" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <!-- 5️⃣ Orders, Wishlist, Reviews, Customer Care -->
+  <section id="orders">
+    <h2>Orders List</h2>
+    <ul class="items-list">
+      <li>Order #101 - Product 1 - Delivered</li>
+      <li>Order #102 - Product 3 - In Transit</li>
+    </ul>
+
+    <h2>Wishlist</h2>
+    <ul class="items-list">
+      <li>Product 2</li>
+      <li>Product 5</li>
+    </ul>
+
+    <h2>Comments & Reviews</h2>
+    <ul class="items-list">
+      <li>"Great product!" - User A</li>
+      <li>"Fast delivery, good service." - User B</li>
+    </ul>
+
+    <h2>Customer Care</h2>
+    <p>Need help? Contact us at <b>support@store.com</b> or call <b>+91 98765 43210</b>.</p>
+
+    <h2>Report an Issue</h2>
+    <form>
+      <input type="text" placeholder="Describe your issue" required />
+      <button type="submit">Submit Report</button>
+    </form>
+  </section>
+
+  <!-- 6️⃣ Contact & About -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@store.com</p>
+    <p>Phone: +91 91234 56789</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a trusted e-commerce platform providing quality products at affordable prices.</p>
+  </section>
+
+  <!-- JavaScript Validation -->
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let name = document.getElementById("regName").value.trim();
+      let email = document.getElementById("regEmail").value.trim();
+      let password = document.getElementById("regPassword").value.trim();
+
+      if (name.length < 3) {
+        alert("Name must be at least 3 characters long.");
+        return;
+      }
+      if (!email.includes("@")) {
+        alert("Enter a valid email address.");
+        return;
+      }
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+      }
+      alert("Registration Successful!");
+      this.reset();
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let email = document.getElementById("loginEmail").value.trim();
+      let password = document.getElementById("loginPassword").value.trim();
+
+      if (email === "" || password === "") {
+        alert("All fields are required.");
+        return;
+      }
+      alert("Login Successful!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
